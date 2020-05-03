@@ -3,7 +3,7 @@ resource "random_id" "this" {
 
   keepers = {
     create_hosted_zone = var.create_hosted_zone
-    domain_name        = var.domain_name
+    domain_name        = var.hosted_zone_name
     name               = var.name
   }
 }
@@ -11,10 +11,11 @@ resource "random_id" "this" {
 resource "aws_route53_zone" "this" {
   count = var.create_hosted_zone ? 1 : 0
 
-  name = var.domain_name
+  name = var.hosted_zone_name
 
   tags = {
     Name      = var.name
+    Module    = path.module
     Workspace = terraform.workspace
   }
 

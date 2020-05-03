@@ -4,9 +4,9 @@ variable "name" {
   default     = "terraform-aws-route53-hosted-zone"
 }
 
-variable "domain_name" {
+variable "hosted_zone_name" {
   type        = string
-  description = "The name of domain."
+  description = "The name of the hosted zone."
 }
 
 variable "create_hosted_zone" {
